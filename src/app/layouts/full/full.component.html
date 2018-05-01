@@ -1,0 +1,20 @@
+<div class="page-container">
+  <!-- Page Sidebar -->
+  <div class="page-sidebar">
+    <a class="logo-box" href="index.html">
+      <span>Space</span>
+      <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
+      <i class="icon-close" id="sidebar-toggle-button-close"></i>
+    </a>
+    <app-sidebar></app-sidebar>
+  </div><!-- /Page Sidebar -->
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Page Header -->
+    <app-header></app-header>
+    <!-- Page Inner -->
+    <router-outlet></router-outlet>
+    <app-right-sidebar></app-right-sidebar>
+  </div><!-- /Page Content -->
+</div>

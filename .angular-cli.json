@@ -21,7 +21,26 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/plugins/jquery/jquery-3.1.0.min.js",
+        "assets/plugins/bootstrap/js/bootstrap.min.js",
+        "assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js",
+        "assets/plugins/uniform/js/jquery.uniform.standalone.js",
+        "assets/plugins/switchery/switchery.min.js",
+        "assets/plugins/d3/d3.min.js",
+        "assets/plugins/nvd3/nv.d3.min.js",
+        "assets/js/pages/datatable.js",
+        "assets/plugins/flot/jquery.flot.min.js",
+        "assets/plugins/flot/jquery.flot.time.min.js",
+        "assets/plugins/flot/jquery.flot.symbol.min.js",
+        "assets/plugins/flot/jquery.flot.resize.min.js",
+        "assets/plugins/flot/jquery.flot.tooltip.min.js",
+        "assets/plugins/flot/jquery.flot.pie.min.js",
+        "assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js",
+        "assets/plugins/chartjs/chart.min.js",
+        "assets/js/space.min.js",
+        "assets/js/pages/dashboard.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

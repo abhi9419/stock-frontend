@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/plugins/bootstrap/css/bootstrap.min.css";
+@import "assets/plugins/font-awesome/css/font-awesome.min.css";
+@import "assets/plugins/icomoon/style.css";
+@import "assets/plugins/uniform/css/default.css" ;
+@import "assets/plugins/switchery/switchery.min.css" ;
+@import "assets/plugins/nvd3/nv.d3.min.css";
+/*@import "assets/plugins/datatables/css/jquery.datatables.min.css";
+@import "assets/plugins/datatables/css/jquery.datatables_themeroller.css";*/
+@import "assets/plugins/bootstrap-datepicker/css/datepicker3.css";
+@import "assets/css/datatable.css";
+
+/*theme styles*/
+@import "assets/css/space.min.css";
+
+@import "assets/css/custom.css";
