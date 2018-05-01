@@ -3,26 +3,28 @@ import {RouterModule, Routes} from '@angular/router';
 import {FullComponent} from "./layouts/full/full.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {SymbolsComponent} from "./pages/symbols/symbols.component";
+import {SymbolDetailComponent} from "./pages/symbol-detail/symbol-detail.component";
 
 const routes: Routes = [
-  {
-    path: '',
-    component: FullComponent,
-    children: [
-      {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'symbols', component: SymbolsComponent}
-    ]
-  },
-  /*{
-    path: '',
-    component: BlankComponent,
-    children: [
-      {path: 'signup', component: SignupComponent, canActivate: [GuestGuardService]},
-      {path: 'login', component: LoginComponent, canActivate: [GuestGuardService]},
-    ]
-  },*/
-  {path: '**', redirectTo: '/dashboard'}
+    {
+        path: '',
+        component: FullComponent,
+        children: [
+            {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+            {path: 'dashboard', component: DashboardComponent},
+            {path: 'symbols', component: SymbolsComponent},
+            {path: 'symbol/:symbol', component: SymbolDetailComponent}
+        ]
+    },
+    /*{
+      path: '',
+      component: BlankComponent,
+      children: [
+        {path: 'signup', component: SignupComponent, canActivate: [GuestGuardService]},
+        {path: 'login', component: LoginComponent, canActivate: [GuestGuardService]},
+      ]
+    },*/
+    {path: '**', redirectTo: '/dashboard'}
 ];
 
 @NgModule({

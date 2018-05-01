@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ApiUrlService} from '../../services/api-url.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpRequestService} from "../../services/http-request.service";
 
 declare const $: any;
@@ -17,7 +17,7 @@ export class SymbolsComponent implements OnInit, OnDestroy {
     symbolLoaded = false;
     symbolData: any;
 
-    constructor(private httpRequestService: HttpRequestService) {
+    constructor(private httpRequestService: HttpRequestService,  private router: Router) {
     }
 
     ngOnInit() {
@@ -39,5 +39,10 @@ export class SymbolsComponent implements OnInit, OnDestroy {
 
     fetchListOfAllSymbol() {
 
+    }
+
+    viewDetail(symbol: string){
+        symbol = symbol.toUpperCase();
+        this.router.navigate(['symbol/', symbol]);
     }
 }

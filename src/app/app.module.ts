@@ -13,6 +13,7 @@ import {SymbolsComponent} from "./pages/symbols/symbols.component";
 import {HttpClientModule} from "@angular/common/http";
 import {ApiUrlService} from "./services/api-url.service";
 import {HttpRequestService} from "./services/http-request.service";
+import { SymbolDetailComponent } from './pages/symbol-detail/symbol-detail.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {HttpRequestService} from "./services/http-request.service";
         HeaderComponent,
         RightSidebarComponent,
         DashboardComponent,
-        SymbolsComponent
+        SymbolsComponent,
+        SymbolDetailComponent
     ],
     imports: [
         BrowserModule,
