@@ -48,5 +48,19 @@ export class HttpRequestService {
             );
     }
 
+    sendGetWithIdentifier(id: number) {
+        const url = this.apiUrlService.getBaseUrl() + this.httpUrl;
+        this.http.get<any[]>(url)
+            .subscribe(data => {
+                    console.log(data);
+                    this.contentLoaded.emit({data: data, id: id});
+                },
+                error => {
+                    console.log(error);
+                    this.contentLoaded.emit(false);
+                }
+            );
+    }
+
 
 }

@@ -1,0 +1,16 @@
+.panel{
+    padding: 5px;
+}
+
+.stats-widget .stats-number {
+    color: #637282;
+    font-size: 17px;
+}
+.stats-widget .stats-icon {
+    font-size: 25px;
+}
+
+.stats-widget .stats-number.stats-number-small {
+    color: green;
+    font-size: 12px;
+}
