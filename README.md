@@ -1,6 +1,7 @@
 # VtFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+Backend for this application [Laravel Backend](https://github.com/abhi9419/stock-backend)
 
 ## Development server
 
