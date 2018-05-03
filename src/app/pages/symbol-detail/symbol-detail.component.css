@@ -14,3 +14,11 @@
     color: green;
     font-size: 12px;
 }
+.stats-number.stats-number-small {
+    color: green;
+    font-size: 12px;
+}
+
+.stats-icon{
+    display: none;
+}
