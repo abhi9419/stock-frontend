@@ -32,8 +32,8 @@ export class SymbolDetailComponent implements OnInit, OnDestroy {
             this.currentSymbol = params['symbol'] === undefined ? '' : params['symbol'];
             this.currentSymbol = this.currentSymbol.toUpperCase();
             this.fetchLatesSymbolValues();
-            this.fetchDataFromApiToBackend();
             this.fetchGraphData();
+            this.fetchDataFromApiToBackend();
         });
         this.latestSymbolValueSubscriber = this.httpRequestService.contentLoaded.subscribe(params => {
             if (params['id'] === 2) {
@@ -57,6 +57,7 @@ export class SymbolDetailComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.currentPageSubscriber.unsubscribe();
         this.latestSymbolValueSubscriber.unsubscribe();
+        this.graphDataSubscriber.unsubscribe();
     }
 
     fetchDataFromApiToBackend() {
@@ -80,7 +81,7 @@ export class SymbolDetailComponent implements OnInit, OnDestroy {
         this.latestSymbolValue.close = data['close'];
         this.latestSymbolValue.volume = data['volume'];
         this.latestSymbolValue.low = data['low'];
-        this.latestSymbolValue.average = (this.latestSymbolValue.open + this.latestSymbolValue.high + this.latestSymbolValue.low + this.latestSymbolValue.close) / 4;
+        this.latestSymbolValue.average = +((this.latestSymbolValue.open + this.latestSymbolValue.high + this.latestSymbolValue.low + this.latestSymbolValue.close) / 4).toFixed(2);
         this.latestTimestamp = data['timestamp'];
     }
 
@@ -90,14 +91,14 @@ export class SymbolDetailComponent implements OnInit, OnDestroy {
         this.secondLatestSymbolValue.close = data['close'];
         this.secondLatestSymbolValue.volume = data['volume'];
         this.secondLatestSymbolValue.low = data['low'];
-        this.secondLatestSymbolValue.average = (this.secondLatestSymbolValue.open + this.secondLatestSymbolValue.high + this.secondLatestSymbolValue.low + this.secondLatestSymbolValue.close) / 4;
+        this.secondLatestSymbolValue.average = +((this.secondLatestSymbolValue.open + this.secondLatestSymbolValue.high + this.secondLatestSymbolValue.low + this.secondLatestSymbolValue.close) / 4).toFixed(2);
     }
 
 
     n() {
 
         nv.addGraph(function () {
-            var chart = nv.models.cumulativeLineChart()
+            var chart = nv.models.lineChart()
                 .x(function (d) {
                     return d[0]
                 })
@@ -109,8 +110,9 @@ export class SymbolDetailComponent implements OnInit, OnDestroy {
             ;
 
             chart.xAxis
+                .showMaxMin(false)
                 .tickFormat(function (d) {
-                    return d3.time.format('%x')(new Date(d))
+                    return d3.time.format('%e-%b-%y')(new Date(d*1000))
                 })
 
             chart.yAxis
