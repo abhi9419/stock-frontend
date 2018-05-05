@@ -14,6 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ApiUrlService} from "./services/api-url.service";
 import {HttpRequestService} from "./services/http-request.service";
 import { SymbolDetailComponent } from './pages/symbol-detail/symbol-detail.component';
+import {SymbolListService} from "./services/symbol-list.service";
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { SymbolDetailComponent } from './pages/symbol-detail/symbol-detail.compo
         AppRoutingModule,
         HttpClientModule
     ],
-    providers: [ApiUrlService,HttpRequestService],
+    providers: [ApiUrlService,HttpRequestService,SymbolListService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

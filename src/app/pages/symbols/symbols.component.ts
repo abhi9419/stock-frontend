@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {ApiUrlService} from '../../services/api-url.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {HttpRequestService} from "../../services/http-request.service";
+import {Router} from '@angular/router';
+import {SymbolListService} from "../../services/symbol-list.service";
 
 declare const $: any;
 
@@ -17,19 +15,20 @@ export class SymbolsComponent implements OnInit, OnDestroy {
     symbolLoaded = false;
     symbolData: any;
 
-    constructor(private httpRequestService: HttpRequestService,  private router: Router) {
+    constructor(private httpRequestService: SymbolListService, private router: Router) {
     }
 
     ngOnInit() {
-        this.symbolSubscriber = this.httpRequestService.contentLoaded.subscribe(params => {
-            this.symbolData = params['data'];
-            this.symbolLoaded = true;
+        this.symbolSubscriber = this.httpRequestService.outputSymbolData.subscribe(params => {
+            this.symbolData = params;
             setTimeout(() => {
-                $('#symbol-table').DataTable();
+                $('#symbol-table').DataTable({
+                    "destroy": true
+                });
             }, 100);
+            this.symbolLoaded = true;
         });
-        this.httpRequestService.setUrl('symbols');
-        this.httpRequestService.sendGet();
+        this.httpRequestService.getSymbolList(false);
 
     }
 
@@ -37,12 +36,15 @@ export class SymbolsComponent implements OnInit, OnDestroy {
         this.symbolSubscriber.unsubscribe();
     }
 
-    fetchListOfAllSymbol() {
 
-    }
-
-    viewDetail(symbol: string){
+    viewDetail(symbol: string) {
         symbol = symbol.toUpperCase();
         this.router.navigate(['symbol/', symbol]);
+    }
+
+    forceRefreshList() {
+        this.symbolData = null;
+        this.symbolLoaded = false;
+        this.httpRequestService.getSymbolList(true);
     }
 }
